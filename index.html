@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Graph Plotter</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workbench" aria-label="Graph plotter">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Line chart</p>
+            <h1>Graph Plotter</h1>
+          </div>
+          <div class="status-row" aria-label="Chart legend">
+            <span><i class="swatch swatch-up"></i>Rising</span>
+            <span><i class="swatch swatch-down"></i>Falling</span>
+            <span><i class="swatch swatch-flat"></i>Flat</span>
+          </div>
+        </header>
+
+        <div class="layout">
+          <aside class="panel" aria-label="Data controls">
+            <div class="field-block">
+              <div class="data-title-row">
+                <label>Data</label>
+                <button id="addRowButton" type="button" class="compact">Add row</button>
+              </div>
+              <div class="data-entry" aria-label="Data entries">
+                <div class="data-head" aria-hidden="true">
+                  <span id="xColumnHead">X</span>
+                  <span>Y</span>
+                  <span>Text</span>
+                  <span></span>
+                </div>
+                <div id="dataRows" class="data-rows"></div>
+              </div>
+            </div>
+
+            <div class="control-grid">
+              <label for="graphMode">Graph</label>
+              <select id="graphMode">
+                <option value="normal">Normal</option>
+                <option value="time">Time graph</option>
+              </select>
+
+              <label for="chartTitle">Title</label>
+              <input id="chartTitle" type="text" value="Sales Trend">
+
+              <label for="xLabel">X axis</label>
+              <input id="xLabel" type="text" value="Month">
+
+              <label for="yLabel">Y axis</label>
+              <input id="yLabel" type="text" value="Value">
+
+              <label for="lineWidth">Line</label>
+              <select id="lineWidth">
+                <option value="2">Thin</option>
+                <option value="4" selected>Medium</option>
+                <option value="6">Thick</option>
+              </select>
+
+              <label for="linePattern">Pattern</label>
+              <select id="linePattern">
+                <option value="solid" selected>Solid</option>
+                <option value="dashed">Dashed</option>
+                <option value="dotted">Dotted</option>
+              </select>
+
+              <label for="pointSize">Dots</label>
+              <select id="pointSize">
+                <option value="0">None</option>
+                <option value="3" selected>Small</option>
+                <option value="5">Medium</option>
+              </select>
+            </div>
+
+            <div class="button-row">
+              <button id="plotButton" type="button" class="primary">Plot</button>
+              <button id="printButton" type="button">Print graph</button>
+              <button id="saveCsvButton" type="button">Save CSV</button>
+              <button id="loadCsvButton" type="button">Load CSV</button>
+              <button id="sampleButton" type="button">Sample</button>
+              <button id="clearButton" type="button" class="ghost">Clear</button>
+              <input id="csvFileInput" class="file-input" type="file" accept=".csv,text/csv">
+            </div>
+
+            <p id="message" class="message" role="status"></p>
+          </aside>
+
+          <section class="chart-area" aria-label="Generated line chart">
+            <svg id="chart" role="img" aria-labelledby="chartSvgTitle chartSvgDesc"></svg>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
